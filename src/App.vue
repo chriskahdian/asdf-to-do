@@ -1,10 +1,14 @@
 <template>
   <div class="bigDiv">
+    <div class="appName">
+      <h1>asdf to-do</h1>
+    </div>
+    <hr>
     <md-field>
       <md-input
         v-model="currentTodo"
         @keydown.enter="addTodo()"
-        placeholder="Add a todo; double click to edit; drag to rearrange"
+        placeholder="add to-do | double click edit | drag rearrange"
         class="addATodo"
       >
       </md-input>
@@ -23,19 +27,19 @@
               todo: true,
               editing: editedTodo === todo,
               completed: todo.completed
+
             }"
         >
           <md-card-content>
             <div class="regular">
-              <input
+              <md-checkbox
                 class="check"
-                type="checkbox"
                 v-model="todo.completed"
               />
-              <span @dblclick="editTodo(todo)">
+              <span class="todoListItem" @dblclick="editTodo(todo)">
                 {{ todo.label }}
               </span>
-              <button class="remove" @click="removeTodo(todo)" >x</button>
+              <md-button class="remove" @click="removeTodo(todo)" >DELETE</md-button>
             </div>
             <input
               type="text"
@@ -101,7 +105,15 @@ export default {
 </script>
 
 <style>
-  .regular{
+  body{
+    background-image: linear-gradient(white, rgba(216, 229, 255, 0.522), white);
+  }
+  .appName{
+    text-align: center;
+  }
+  hr{
+    border-top: 1px solid;
+    width: 100%;
   }
   .edit {
     display: none;
@@ -123,15 +135,18 @@ export default {
     margin-top: 50px;
     border: 1px solid;
     text-align: left;
-    overflow: hidden;
+    background-image: linear-gradient(white, rgb(255, 252, 237));
   }
   .dragContainer{
     display: flex;
     flex-direction: column;
   }
-  md-card{
-    margin-left: 30px;
-    border: solid;
+  .check{
+    border: 1px solid;
+    transform: scale(0.75);
+  }
+  .completed .check{
+    background-color: black;
   }
   .addATodo{
     text-align: center;
