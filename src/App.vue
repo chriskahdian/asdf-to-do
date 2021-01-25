@@ -106,7 +106,7 @@ export default {
 
 <style>
   body{
-    background-image: linear-gradient(white, rgba(216, 229, 255, 0.522), white);
+    background-image: linear-gradient(white, rgba(216, 229, 255, 0.300), white);
   }
   .appName{
     text-align: center;
